@@ -11,6 +11,9 @@ en:
     new_book: New Book
     back: Back
 
+  confirm:
+    are_you_sure: Are you sure?
+
   activerecord:
     models:
       book: Book  #g

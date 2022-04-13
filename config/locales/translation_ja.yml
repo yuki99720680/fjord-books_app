@@ -11,6 +11,9 @@ ja:
     new_book: 書籍を作成
     back: 戻る
 
+  confirm:
+    are_you_sure: 本当にいいですか？
+
   activerecord:
     models:
       book: 書籍  #g
