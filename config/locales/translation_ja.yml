@@ -14,6 +14,11 @@ ja:
   confirm:
     are_you_sure: 本当にいいですか？
 
+  notice:
+    book_was_successfully_created: 書籍の作成に成功しました。
+    book_was_successfully_updated: 書籍の更新に成功しました。
+    book_was_successfully_destroyed: 書籍の削除に成功しました。
+
   activerecord:
     models:
       book: 書籍  #g

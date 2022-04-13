@@ -14,6 +14,11 @@ en:
   confirm:
     are_you_sure: Are you sure?
 
+  notice:
+    book_was_successfully_created: Book was successfully created.
+    book_was_successfully_updated: Book was successfully updated.
+    book_was_successfully_destroyed: Book was successfully destroyed.
+
   activerecord:
     models:
       book: Book  #g
