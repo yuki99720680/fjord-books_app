@@ -1,8 +1,17 @@
 ja:
-  header:
-    books: 書籍一覧
-    new_book: 書籍を作成
-    editing_book: 書籍を編集
+  books:
+    index:
+      title: 書籍一覧
+    new:
+      title: 書籍を作成
+    edit:
+      title: 書籍を編集
+    create:
+      success: 書籍の作成に成功しました。
+    update:
+      success: 書籍の更新に成功しました。
+    destroy:
+      success: 書籍の削除に成功しました。
 
   button:
     show: 閲覧
@@ -13,11 +22,6 @@ ja:
 
   confirm:
     are_you_sure: 本当にいいですか？
-
-  notice:
-    book_was_successfully_created: 書籍の作成に成功しました。
-    book_was_successfully_updated: 書籍の更新に成功しました。
-    book_was_successfully_destroyed: 書籍の削除に成功しました。
 
   activerecord:
     models:

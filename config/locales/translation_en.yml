@@ -1,8 +1,17 @@
 en:
-  header:
-    books: Books
-    new_book: New Book
-    editing_book: Editing Book
+  books:
+    index:
+      title: Books
+    new:
+      title: New Book
+    edit:
+      title: Editing Book
+    create:
+      success: Book was successfully created.
+    update:
+      success: Book was successfully updated.
+    destroy:
+      success: Book was successfully destroyed.
 
   button:
     show: Show
@@ -13,11 +22,6 @@ en:
 
   confirm:
     are_you_sure: Are you sure?
-
-  notice:
-    book_was_successfully_created: Book was successfully created.
-    book_was_successfully_updated: Book was successfully updated.
-    book_was_successfully_destroyed: Book was successfully destroyed.
 
   activerecord:
     models:
