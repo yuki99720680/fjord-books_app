@@ -2,5 +2,18 @@
   <strong>Email:</strong>
   <%= @user.email %>
 </p>
+<p>
+  <strong>Postal Code:</strong>
+  <%= @user.postal_code %>
+</p>
+<p>
+  <strong>Address:</strong>
+  <%= @user.address %>
+</p>
+<p>
+  <strong>Bio:</strong>
+  <%= @user.bio %>
+</p>
 
+<%= link_to 'Edit', edit_user_registration_path(@user) %> |
 <%= link_to 'Back', users_path %>
