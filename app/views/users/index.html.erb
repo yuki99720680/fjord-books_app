@@ -19,3 +19,5 @@
 </table>
 
 <%= paginate @users %>
+<%= link_to '書籍一覧', books_path %>
+<%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
