@@ -1,9 +1,9 @@
-<h1>Users</h1>
+<h1><%= t('.users') %></h1>
 
 <table>
   <thead>
     <tr>
-      <th>Email</th>
+      <th><%= User.human_attribute_name 'email' %></th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -12,12 +12,12 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= user.email %></td>
-        <td><%= link_to 'Show', user %></td>
+        <td><%= link_to t('devise.shared.links.show'), user %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <%= paginate @users %>
-<%= link_to '書籍一覧', books_path %>
-<%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+<%= link_to t('.books'), books_path %>
+<%= link_to t('devise.shared.links.sign_out'), destroy_user_session_path, method: :delete %>

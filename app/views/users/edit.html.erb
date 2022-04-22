@@ -1,6 +1,6 @@
-<h1>Editing User</h1>
+<h1><%= t('.editing_user') %></h1>
 
 <%= render 'form', user: @user %>
 
-<%= link_to 'show', @user %> |
-<%= link_to 'back', users_path %>
+<%= link_to t('devise.shared.links.show'), @user %> |
+<%= link_to t('devise.shared.links.back'), users_path %>

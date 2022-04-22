@@ -1,21 +1,21 @@
 <p>
-  <strong>Email:</strong>
+  <strong><%= User.human_attribute_name 'email' %>:</strong>
   <%= @user.email %>
 </p>
 <p>
-  <strong>Postal Code:</strong>
+  <strong><%= User.human_attribute_name 'postal_code' %>:</strong>
   <%= @user.postal_code %>
 </p>
 <p>
-  <strong>Address:</strong>
+  <strong><%= User.human_attribute_name 'address' %>:</strong>
   <%= @user.address %>
 </p>
 <p>
-  <strong>Bio:</strong>
+  <strong><%= User.human_attribute_name 'bio' %>:</strong>
   <%= @user.bio %>
 </p>
 
 <% if current_user == @user %>
-  <%= link_to 'Edit', edit_user_path(@user) %>
+  <%= link_to t('devise.shared.links.edit'), edit_user_path(@user) %>
 <% end %>
-<%= link_to 'Back', users_path %>
+<%= link_to t('devise.shared.links.back'), users_path %>
