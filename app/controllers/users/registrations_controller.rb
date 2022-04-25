@@ -21,6 +21,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # PUT /resource
   def update
+    configure_account_update_params
     super
   end
 
