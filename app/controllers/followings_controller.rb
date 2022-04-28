@@ -8,7 +8,9 @@ class FollowingsController < ApplicationController
     redirect_to request.referer, notice: 'フォローしたよ！' if current_user.following.create(follower_id: @user.id)
   end
 
-  def destroy; end
+  def destroy
+    redirect_to request.referer, notice: 'フォロー解除したよ！' if current_user.following.find_by(follower_id: @user.id).destroy
+  end
 
   private
 
