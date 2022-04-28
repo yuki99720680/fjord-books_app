@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 2022_04_27_041737) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["follower_id"], name: "index_follows_on_follower_id"
+    t.index ["following_id", "follower_id"], name: "index_follows_on_following_id_and_follower_id", unique: true
     t.index ["following_id"], name: "index_follows_on_following_id"
   end
 
@@ -76,6 +77,6 @@ ActiveRecord::Schema.define(version: 2022_04_27_041737) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "follows", "followers"
-  add_foreign_key "follows", "followings"
+  add_foreign_key "follows", "users", column: "follower_id"
+  add_foreign_key "follows", "users", column: "following_id"
 end
