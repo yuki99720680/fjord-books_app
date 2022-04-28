@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class FollowingsController < ApplicationController
   before_action :set_user, only: %i[index create destroy]
 
