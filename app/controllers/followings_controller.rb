@@ -1,8 +1,10 @@
 class FollowingsController < ApplicationController
-  before_action :set_user, only: %i[create destroy]
+  before_action :set_user, only: %i[index create destroy]
 
-  def index; end
-  # current_user.following
+  def index
+    following_ids = @user.following_ids
+    @users = User.where(id: following_ids)
+  end
 
   def create
     if current_user == @user
