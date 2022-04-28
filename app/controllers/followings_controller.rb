@@ -5,11 +5,19 @@ class FollowingsController < ApplicationController
   # current_user.following
 
   def create
-    redirect_to request.referer, notice: 'フォローしたよ！' if current_user.following.create(follower_id: @user.id)
+    if current_user == @user
+      redirect_to request.referer, notice: 'それ自分'
+    elsif current_user.following.create(follower_id: @user.id)
+      redirect_to request.referer, notice: 'フォローしたよ！'
+    end
   end
 
   def destroy
-    redirect_to request.referer, notice: 'フォロー解除したよ！' if current_user.following.find_by(follower_id: @user.id).destroy
+    if current_user == @user
+      redirect_to request.referer, notice: 'それ自分'
+    elsif current_user.following.find_by(follower_id: @user.id).destroy
+      redirect_to request.referer, notice: 'フォロー解除したよ！'
+    end
   end
 
   private
