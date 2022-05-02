@@ -4,8 +4,7 @@ class FollowersController < ApplicationController
   before_action :set_user, only: %i[index]
 
   def index
-    follower_ids = @user.follower_ids
-    @users = User.where(id: follower_ids)
+    @users = @user.follower_user
   end
 
   private

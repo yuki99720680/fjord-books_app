@@ -4,24 +4,29 @@ class FollowingsController < ApplicationController
   before_action :set_user, only: %i[index create destroy]
 
   def index
-    following_ids = @user.following_ids
-    @users = User.where(id: following_ids)
+    @users = @user.following_user
   end
 
   def create
-    if current_user == @user
-      redirect_to request.referer, notice: 'それ自分'
-    elsif current_user.following.create(follower_id: @user.id)
-      redirect_to request.referer, notice: 'フォローしたよ！'
-    end
+    notice = if current_user == @user
+               '自分自身はフォローできません。'
+             elsif current_user.following.create(follower_id: @user.id).id.nil?
+               'フォロー済みです。'
+             else
+               'フォローしました。'
+             end
+    redirect_to request.referer, notice: notice
   end
 
   def destroy
-    if current_user == @user
-      redirect_to request.referer, notice: 'それ自分'
-    elsif current_user.following.find_by(follower_id: @user.id).destroy
-      redirect_to request.referer, notice: 'フォロー解除したよ！'
-    end
+    notice = if current_user == @user
+               '自分自身はフォローできません。'
+             elsif current_user.following.find_by(follower_id: @user.id).nil?
+               'フォローしていません。'
+             elsif current_user.following.find_by(follower_id: @user.id).destroy
+               'フォロー解除しました。'
+             end
+    redirect_to request.referer, notice: notice
   end
 
   private
