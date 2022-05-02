@@ -1,25 +1,13 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[show edit update]
+  before_action :set_user, only: %i[show]
 
   def index
     @users = User.order(:id).page(params[:page]).per(1)
   end
 
   def show; end
-
-  def edit
-    render_not_found unless current_user == @user
-  end
-
-  def update
-    if @user.update(user_params)
-      redirect_to @user, notice: '[TEST MASSAGE] User update success.'
-    else
-      render :edit
-    end
-  end
 
   private
 
