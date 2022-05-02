@@ -9,22 +9,22 @@ class FollowingsController < ApplicationController
 
   def create
     notice = if current_user == @user
-               '自分自身はフォローできません。'
+               t('.cannot_following_myself')
              elsif current_user.following.create(follower_id: @user.id).id.nil?
-               'フォロー済みです。'
+               t('.already_following')
              else
-               'フォローしました。'
+               t('.success')
              end
     redirect_to request.referer, notice: notice
   end
 
   def destroy
     notice = if current_user == @user
-               '自分自身はフォローできません。'
+               t('.cannot_following_myself')
              elsif current_user.following.find_by(follower_id: @user.id).nil?
-               'フォローしていません。'
+               t('.not_following')
              elsif current_user.following.find_by(follower_id: @user.id).destroy
-               'フォロー解除しました。'
+               t('.success')
              end
     redirect_to request.referer, notice: notice
   end
