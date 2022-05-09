@@ -241,11 +241,16 @@ ja:
     followers:
       index:
         title: フォロワー
+  comments:
+    comments:
+      no_comments: コメントはありません。
   controllers:
     common:
       notice_create: "%{name}が作成されました。"
       notice_update: "%{name}が更新されました。"
       notice_destroy: "%{name}が削除されました。"
+      alert_update_resource_of_other_user: "他ユーザーの%{name}は編集できません。"
+      alert_destroy_resource_of_other_user: "他ユーザーの%{name}は削除できません。"
   relationships:
     create:
       notice: "フォローしました。"
