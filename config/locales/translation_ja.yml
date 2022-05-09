@@ -16,3 +16,25 @@ ja:
         address: 住所
         self_introduction: 自己紹介文
         avatar: ユーザ画像
+      follow:
+        following: フォロー
+        follower: フォロワー
+
+  users:
+    show:
+      follow: "フォロー"
+      unfollow: "フォロー解除"
+  followings:
+    index:
+      title: "フォロー一覧"
+    create:
+      cannot_following_myself: "自分自身はフォローできません。"
+      already_following: "既にフォローしています。"
+      success: "フォローしました。"
+    destroy:
+      cannot_following_myself: "自分自身はフォローできません。"
+      not_following: "フォローしていません。"
+      success: "フォロー解除しました。"
+  followers:
+    index:
+      title: "フォロワー一覧"
