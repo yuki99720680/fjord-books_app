@@ -5,7 +5,7 @@ class ReportsController < ApplicationController
 
   # GET /reports
   def index
-    @reports = Report.all
+    @reports = Report.all.includes(:user).order(:id)
   end
 
   # GET /reports/1
@@ -22,8 +22,8 @@ class ReportsController < ApplicationController
   # POST /reports
   def create
     @report = Report.new(report_params)
-    if @report.save
-      redirect_to report_url(@report), notice: 'Report was successfully created.'
+    if current_user.reports.create(report_params)
+      redirect_to @report, notice: t('controllers.common.notice_create', name: Report.model_name.human)
     else
       render :new, status: :unprocessable_entity
     end
@@ -31,17 +31,27 @@ class ReportsController < ApplicationController
 
   # PATCH/PUT /reports/1
   def update
-    if @report.update(report_params)
-      redirect_to report_url(@report), notice: 'Report was successfully updated.'
+    if current_user == @report.user
+      if current_user.reports.update(report_params)
+        notice = t('controllers.common.notice_update', name: Report.model_name.human)
+      else
+        render :edit, status: :unprocessable_entity
+      end
     else
-      render :edit, status: :unprocessable_entity
+      alert = t('controllers.common.alert_update_resource_of_other_user', name: Report.model_name.human)
     end
+    redirect_to @report, notice: notice, alert: alert
   end
 
   # DELETE /reports/1
   def destroy
-    @report.destroy
-    redirect_to reports_url, notice: 'Report was successfully destroyed.'
+    if current_user == @report.user
+      @report.destroy
+      notice = t('controllers.common.notice_destroy', name: Report.model_name.human)
+    else
+      alert = t('controllers.common.alert_destroy_resource_of_other_user', name: Report.model_name.human)
+    end
+    redirect_to reports_url, notice: notice, alert: alert
   end
 
   private
