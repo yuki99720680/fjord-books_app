@@ -21,8 +21,8 @@ class ReportsController < ApplicationController
 
   # POST /reports
   def create
-    @report = Report.new(report_params)
-    if current_user.reports.create(report_params)
+    @report = current_user.reports.create(report_params)
+    if @report
       redirect_to @report, notice: t('controllers.common.notice_create', name: Report.model_name.human)
     else
       render :new, status: :unprocessable_entity
