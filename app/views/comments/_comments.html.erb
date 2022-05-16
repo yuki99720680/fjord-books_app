@@ -16,7 +16,7 @@
         <p><%= comment.body %></p>
         <footer>
           <p><%= Comment.human_attribute_name(:created_at) %>: <%= l comment.created_at, format: :long %></p>
-          <p><%= Comment.human_attribute_name(:user) %>: <%= comment.user.email %></p>
+          <p><%= Comment.human_attribute_name(:user) %>: <%= comment.user.name || comment.user.email %></p>
           <% if current_user == comment.user %>
             <%= link_to t('views.common.destroy'), comment, method: :delete, data: { confirm: t('views.common.delete_confirm') } %>
           <% end %>
