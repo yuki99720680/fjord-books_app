@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class CommentsController < ApplicationController
+  before_action :set_commentable, only: %i[create]
+
   def create
     @commentable.comments.create(comment_params)
     redirect_to request.referer, notice: t('controllers.common.notice_create', name: Comment.model_name.human)
