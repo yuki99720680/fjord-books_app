@@ -8,7 +8,7 @@
       <%= form.submit %>
     </div>
   <% end %>
-  <% if commentable.comments.size == 0 %>
+  <% if commentable.comments.size.zero? %>
     <p><%= t('.no_comments') %></p>
   <% else %>
     <% commentable.comments.each do |comment| %>
