@@ -9,14 +9,8 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    comment = Comment.find(params[:id])
-    if current_user == comment.user
-      comment.destroy
-      notice = t('controllers.common.notice_destroy', name: Comment.model_name.human)
-    else
-      alert = t('controllers.common.alert_destroy_resource_of_other_user', name: Comment.model_name.human)
-    end
-    redirect_to request.referer, notice: notice, alert: alert
+    current_user.comments.find(params[:id]).destroy
+    redirect_to request.referer, notice: t('controllers.common.notice_destroy', name: Comment.model_name.human)
   end
 
   private

@@ -45,13 +45,8 @@ class ReportsController < ApplicationController
 
   # DELETE /reports/1
   def destroy
-    if current_user == @report.user
-      @report.destroy
-      notice = t('controllers.common.notice_destroy', name: Report.model_name.human)
-    else
-      alert = t('controllers.common.alert_destroy_resource_of_other_user', name: Report.model_name.human)
-    end
-    redirect_to reports_url, notice: notice, alert: alert
+    current_user.reports.find(params[:id]).destroy
+    redirect_to reports_url, notice: t('controllers.common.notice_destroy', name: Report.model_name.human)
   end
 
   private
