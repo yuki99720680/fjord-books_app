@@ -31,16 +31,11 @@ class ReportsController < ApplicationController
 
   # PATCH/PUT /reports/1
   def update
-    if current_user == @report.user
-      if current_user.reports.update(report_params)
-        notice = t('controllers.common.notice_update', name: Report.model_name.human)
-      else
-        render :edit, status: :unprocessable_entity
-      end
+    if current_user.reports.find(params[:id]).update(report_params)
+      redirect_to @report, notice: t('controllers.common.notice_update', name: Report.model_name.human)
     else
-      alert = t('controllers.common.alert_update_resource_of_other_user', name: Report.model_name.human)
+      render :edit, status: :unprocessable_entity
     end
-    redirect_to @report, notice: notice, alert: alert
   end
 
   # DELETE /reports/1
