@@ -204,6 +204,7 @@ ja:
       default: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
+      date_only: "%Y/%m/%d"
     pm: 午後
   views:
     common:
@@ -240,11 +241,15 @@ ja:
     followers:
       index:
         title: フォロワー
+  comments:
+    comments:
+      no_comments: コメントはありません。
   controllers:
     common:
       notice_create: "%{name}が作成されました。"
       notice_update: "%{name}が更新されました。"
       notice_destroy: "%{name}が削除されました。"
+      alert_update_resource_of_other_user: "他ユーザーの%{name}は編集できません。"
   relationships:
     create:
       notice: "フォローしました。"
